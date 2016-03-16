@@ -23,13 +23,12 @@ app.get('/latest', function(request, response) {
 app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
-  urlshortener.url.get(params, function (err, response, next) {
+  urlshortener.url.get(params, function (err, response) {
     if (err) {
       response.send('Encountered error', err);
     } else {
       response.send('Long url is', response.longUrl);
     }
-    next();
   });
   response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
   //response.end('Its Over!'); 
