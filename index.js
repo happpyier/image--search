@@ -17,7 +17,7 @@ app.get('/latest', function(request, response) {
   //response.end('Its Over!'); 
 });
 app.get('/:id', function(request, response) {
-  var parameters1 = JSON.stringify(request.param);
+  var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
   //response.end('Its Over!'); 
