@@ -23,7 +23,7 @@ app.get('/latest', function(request, response) {
 app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
-  urlshortener.url.get(params, function (err, response), next {
+  urlshortener.url.get(params, function (err, response, next) {
     if (err) {
       response.send('Encountered error', err);
     } else {
