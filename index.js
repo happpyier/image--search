@@ -25,9 +25,9 @@ app.get('/:id', function(request, response) {
   var parameters2 = JSON.stringify(request.query);
   urlshortener.url.get(params, function (err, response) {
     if (err) {
-      console.log('Encountered error', err);
+      response.send('Encountered error', err);
     } else {
-      console.log('Long url is', response.longUrl);
+      response.send('Long url is', response.longUrl);
     }
   
   });
