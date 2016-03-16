@@ -1,5 +1,6 @@
 /*
 https://developers.google.com/custom-search/docs/tutorial/introduction USING this as a reference;
+https://developers.google.com/custom-search/docs/element#supported_attributes Also a reference;
 http://google.github.io/google-api-nodejs-client/3.1.0/index.html Also a reference;
 https://github.com/google/google-api-nodejs-client/ Also a reference;
 */
