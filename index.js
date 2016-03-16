@@ -16,7 +16,7 @@ app.get('/latest', function(request, response) {
   response.send('This is the latest query page.');
   //response.end('Its Over!'); 
 });
-app.get('//:id', function(request, response) {
+app.get('/:id', function(request, response) {
   response.send('This is the search page.<br/>Your query is <br/>'+request.params.id);
   //response.end('Its Over!'); 
 });
