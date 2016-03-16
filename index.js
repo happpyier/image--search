@@ -17,8 +17,9 @@ app.get('/latest', function(request, response) {
   //response.end('Its Over!'); 
 });
 app.get('/:id', function(request, response) {
-  var parameters = JSON.stringify(request.query);
-  response.send('This is the search page.<br/>Your query is <br/>'+parameters);
+  var parameters1 = JSON.stringify(request.query);
+  var parameters12 = JSON.stringify(request.query);
+  response.send('This is the search page.<br/>Your query is <br/>'parameters1+' '+parameters2);
   //response.end('Its Over!'); 
 });
 app.listen(app.get('port'), function() {
