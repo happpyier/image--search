@@ -22,7 +22,7 @@ app.get('/:id', function(request, response) {
   response.sendFile(path.join(__dirname+'/searchresults.html'));
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
 });
-app.get('/?q', function(request, response) {
+app.get(/^?q/, function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   response.sendFile(path.join(__dirname+'/searchresults.html'));
