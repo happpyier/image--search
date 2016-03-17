@@ -33,7 +33,7 @@ app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   //response.sendFile(path.join(__dirname+'/searchresults.html'));
-  plus.people.get({ auth: oauth2Client: '+google' }, function(err, user) {
+ plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
   response.send('Result: ' + (err ? err.message : user.displayName));
 });
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
