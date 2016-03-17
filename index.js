@@ -15,6 +15,7 @@ var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
 google.options({ auth: oauth2Client }); // set auth as a global default
+var plus = google.plus('v1');
 var urlsearch = google.customsearch('v1');
 var express = require('express');
 var app = express();
@@ -31,7 +32,10 @@ app.get('/latest', function(request, response) {
 app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
-  response.sendFile(path.join(__dirname+'/searchresults.html'));
+  //response.sendFile(path.join(__dirname+'/searchresults.html'));
+  plus.people.get({ auth: oauth2Client: '+google' }, function(err, user) {
+  response.send('Result: ' + (err ? err.message : user.displayName));
+});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
 });
 app.listen(app.get('port'), function() {
