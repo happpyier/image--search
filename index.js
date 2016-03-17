@@ -3,8 +3,14 @@ https://developers.google.com/custom-search/docs/tutorial/introduction USING thi
 https://developers.google.com/custom-search/docs/element#supported_attributes Also a reference;
 http://google.github.io/google-api-nodejs-client/3.1.0/index.html Also a reference;
 https://github.com/google/google-api-nodejs-client/ Also a reference;
+
+example of an api call
+https://www.googleapis.com/customsearch/v1?key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM&cx=012239477241375126935:swwmv-c4dsi&q=lectures
 */
+var secretKey = 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
+var cxId = '012239477241375126935:swwmv-c4dsi';
 var google = require('googleapis');
+var urlsearch = google.search.cse.list
 var express = require('express');
 var app = express();
 var path = require("path");
