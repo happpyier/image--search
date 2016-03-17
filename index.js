@@ -33,7 +33,7 @@ app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   //response.sendFile(path.join(__dirname+'/searchresults.html'));
-	plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
+	plus.people.get({ userId: 'RyuuLavitz', auth: oauth2Client }, function(err, response) {
 	  if (err)
 	  {
 		response.send('Error');
