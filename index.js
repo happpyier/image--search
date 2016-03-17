@@ -34,7 +34,7 @@ app.get('/:id', function(request, response) {
   var parameters2 = JSON.stringify(request.query);
   //response.sendFile(path.join(__dirname+'/searchresults.html'));
   var API_KEY = secretKey; // specify your API key here
-	plus.people.get({ auth: API_KEY, userId: '+RyuuLavitz' }, function(err, user) {
+	plus.people.get({ auth: API_KEY, userId: '+google' }, function(err, user) {
 	  console.log('Result: ' + (err ? err.message : user.displayName));
 	});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
