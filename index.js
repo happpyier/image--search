@@ -34,14 +34,7 @@ app.get('/:id', function(request, response) {
   var parameters2 = JSON.stringify(request.query);
   //response.sendFile(path.join(__dirname+'/searchresults.html'));
 	plus.people.get({ userId: 'RyuuLavitz', auth: oauth2Client }, function(err, response) {
-	  if (err)
-	  {
-		response.send('Error');
-	  }
-	  else
-	  {
 		response.send( 'response' );
-	  }
 	});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
 });
