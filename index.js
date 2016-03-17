@@ -33,9 +33,16 @@ app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   //response.sendFile(path.join(__dirname+'/searchresults.html'));
- plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
-  response.send('Result: ' + (err ? err.message : user.displayName));
-});
+	plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
+	  if (err)
+	  {
+		response.send('Error' + err);
+	  }
+	  else
+	  {
+		response.send( response );
+	  }
+	});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
 });
 app.listen(app.get('port'), function() {
