@@ -40,7 +40,7 @@ app.get('/:id', function(request, response) {
 	  }
 	  else
 	  {
-		response.send( response );
+		response.send( 'response' );
 	  }
 	});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
