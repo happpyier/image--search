@@ -36,7 +36,7 @@ app.get('/:id', function(request, response) {
 	plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
 	  if (err)
 	  {
-		response.send('Error' + err);
+		response.send('Error');
 	  }
 	  else
 	  {
