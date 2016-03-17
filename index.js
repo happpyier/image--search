@@ -33,8 +33,9 @@ app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   //response.sendFile(path.join(__dirname+'/searchresults.html'));
-	plus.people.get({ userId: 'RyuuLavitz', auth: oauth2Client }, function(err, response) {
-		response.send( 'response' );
+  var API_KEY = secretKey; // specify your API key here
+	plus.people.get({ auth: API_KEY, userId: '+RyuuLavitz' }, function(err, user) {
+	  console.log('Result: ' + (err ? err.message : user.displayName));
 	});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
 });
