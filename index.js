@@ -14,7 +14,7 @@ var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
-google.options({ auth: oauth2Client }); // set auth as a global default
+//google.options({ auth: oauth2Client }); // set auth as a global default
 var plus = google.plus('v1');
 var urlsearch = google.customsearch('v1');
 var express = require('express');
@@ -29,7 +29,16 @@ app.get('/', function(request, response) {
 app.get('/latest', function(request, response) {
   response.send('This is the latest query page.');
 });
-
+app.get('/:id', function(request, response) {
+  var parameters1 = JSON.stringify(request.params);
+  var parameters2 = JSON.stringify(request.query);
+  //response.sendFile(path.join(__dirname+'/searchresults.html'));
+  var API_KEY = secretKey; // specify your API key here
+	plus.people.get({ auth: API_KEY, userId: '+google' }, function(err, user) {
+	  console.log('Result: ' + (err ? err.message : user.displayName));
+	});
+  //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
+});
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port')); 
 });
