@@ -29,13 +29,7 @@ app.get('/', function(request, response) {
 app.get('/latest', function(request, response) {
   response.send('This is the latest query page.');
 });
-app.get('/:id', function(request, response) {
-  var parameters1 = JSON.stringify(request.params);
-  var parameters2 = JSON.stringify(request.query);
-  //response.sendFile(path.join(__dirname+'/searchresults.html'));
-  var API_KEY = secretKey; // specify your API key here
-
-  //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
+sponse.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
 });
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port')); 
