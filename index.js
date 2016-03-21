@@ -29,8 +29,7 @@ app.get('/', function(request, response) {
 app.get('/latest', function(request, response) {
   response.send('This is the latest query page.');
 });
-sponse.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
-});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port')); 
 });
