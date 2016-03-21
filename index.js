@@ -34,7 +34,7 @@ app.get('/:id', function(request, response) {
   //response.sendFile(path.join(__dirname+'/searchresults.html'));
   var API_KEY = secretKey; // specify your API key here
 	plus.people.get({ auth: API_KEY, userId: '+RyuuLavitz' }, function(err, user) {
-	  response.send('User<br/>'+Object.keys(user)+'<br/>Result: ' + (err ? err.message : user.displayName) + '<br/>Image:' + user.image);
+	  response.send('User<br/>'+Object.keys(user.image)+'<br/>Result: ' + (err ? err.message : user.displayName) + '<br/>Image:' + user.image);
 	});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
 });
