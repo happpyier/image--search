@@ -36,8 +36,10 @@ app.get('/:id', function(request, response) {
 	  response.send('User<br/>'+Object.keys(user.image)+'<br/>Result: ' + (err ? err.message : user.displayName) + '<br/>Image:<br/><img src='+user.image.url+'>');
 	});
 	*/
-	response.sendFile(path.join(__dirname+'/searchresults.html'));
-
+	//response.sendFile(path.join(__dirname+'/searchresults.html'));
+	urlsearch.list({ auth: API_KEY, q: 'Ryuu+Lavitz', h: 1 }, function(err, user) {
+	  response.send('customerserach<br/>');
+	});
 	//response.end('all done');
 	
 });
