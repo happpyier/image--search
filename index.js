@@ -36,7 +36,7 @@ app.get('/:id', function(request, response) {
 	  response.send('User<br/>'+Object.keys(user.image)+'<br/>Result: ' + (err ? err.message : user.displayName) + '<br/>Image:<br/><img src='+user.image.url+'>');
 	});
 	*/
-	urlsearch.list;
+	urlsearch.search.cse.list;
 	response.end('all done');
 	
 });
