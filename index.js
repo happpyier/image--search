@@ -36,10 +36,10 @@ app.get('/:id', function(request, response) {
 	  response.send('User<br/>'+Object.keys(user.image)+'<br/>Result: ' + (err ? err.message : user.displayName) + '<br/>Image:<br/><img src='+user.image.url+'>');
 	});
 	*/
-	//response.sendFile(path.join(__dirname+'/searchresults.html'));
-	urlsearch({ auth: API_KEY, cx:'012239477241375126935:swwmv-c4dsi', ?q:'Ryuu+Lavitz' }, function(err, user) {
-	  response.send((err ? 'it Failed' : 'It worked'));
-	});
+	response.sendFile(path.join(__dirname+'/searchresults.html'));
+	//urlsearch({ auth: API_KEY, cx:'012239477241375126935:swwmv-c4dsi', ?q:'Ryuu+Lavitz' }, function(err, user) {
+	//  response.send((err ? 'it Failed' : 'It worked'));
+	//});
 	//response.end('all done');
 	
 });
