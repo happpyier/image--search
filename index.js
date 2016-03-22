@@ -3,7 +3,6 @@ https://developers.google.com/custom-search/docs/tutorial/introduction USING thi
 https://developers.google.com/custom-search/docs/element#supported_attributes Also a reference;
 http://google.github.io/google-api-nodejs-client/3.1.0/index.html Also a reference;
 https://github.com/google/google-api-nodejs-client/ Also a reference;
-
 example of an api call
 https://www.googleapis.com/customsearch/v1?key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM&cx=012239477241375126935:swwmv-c4dsi&q=lectures
 */
@@ -31,9 +30,8 @@ app.get('/latest', function(request, response) {
 app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
-  //response.sendFile(path.join(__dirname+'/searchresults.html'));
   var API_KEY = secretKey; // specify your API key here
-	plus.people.get({ auth: API_KEY, userId: '+RyuuLavitz' }, function(err, user) {
+	urlsearch.get({ auth: API_KEY, userId: '+RyuuLavitz' }, function(err, user) {
 	  response.send('User<br/>'+Object.keys(user.image)+'<br/>Result: ' + (err ? err.message : user.displayName) + '<br/>Image:<br/><img src='+user.image.url+'>');
 	});
   //response.send('This is the search page.<br/>Your query is <br/>'+parameters1+' '+parameters2);
