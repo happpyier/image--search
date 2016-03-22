@@ -37,8 +37,8 @@ app.get('/:id', function(request, response) {
 	});
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
-	urlsearch({ auth: API_KEY, q: 'Ryuu+Lavitz', h: 1 }, function(err, user) {
-	  response.send('customerserach<br/>');
+	urlsearch({ auth: API_KEY, q: 'Ryuu+Lavitz' }, function(err, user) {
+	  response.send((err ? err.message : 'It worked'));
 	});
 	//response.end('all done');
 	
