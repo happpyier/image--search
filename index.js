@@ -37,6 +37,7 @@ app.get('/:id', function(request, response) {
 	});
 	*/
 	urlsearch.list;
+	response.end('all done');
 	
 });
 
