@@ -56,6 +56,7 @@ app.get('/:id', function(request, response) {
 	  response.on('end', function () {
 		console.log(str);
 	  });
+	  response.end('All Done');
 	}
 
 	http.request(options, callback).end();
