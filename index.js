@@ -61,7 +61,6 @@ app.get('/:id', function(request, response) {
 	
 	//urlsearch.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
 	//response.send(err ? 'it Failed' : 'It worked');
-	});
 	//response.end('all done');
 	
 });
