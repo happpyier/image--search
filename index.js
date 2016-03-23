@@ -40,7 +40,7 @@ app.get('/:id', function(request, response) {
 	
 
 	urlsearch.cse.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
-	  response.send(err ? 'it Failed' : 'It worked');
+	  response.send(err ? 'Error ' + err : 'It worked');
 	});
 	//response.end('all done');
 	
