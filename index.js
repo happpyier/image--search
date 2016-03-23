@@ -53,7 +53,7 @@ app.get('/:id', function(request, response) {
 
 	  //the whole response has been recieved, so we just print it out here
 	  response.on('end', function () {
-		response.send(str);
+		console.log(str);
 	  });
 	}
 
