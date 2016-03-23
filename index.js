@@ -38,9 +38,10 @@ app.get('/:id', function(request, response) {
 	});
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
+	//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
 	var options = {
-	  host: 'https://www.googleapis.com',
-	  path: '/customsearch/v1?q=Ryuu+Lavitz&cx=012239477241375126935%3Aswwmv-c4dsi&num=10&searchType=image&fields=items(image%2FcontextLink%2Clink%2Ctitle)&key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM'
+	  host: 'www.random.org',
+	  path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
 	};
 
 	callback = function(response) {
@@ -58,10 +59,6 @@ app.get('/:id', function(request, response) {
 	}
 
 	http.request(options, callback).end();
-	
-	//urlsearch.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
-	//response.send(err ? 'it Failed' : 'It worked');
-	//response.end('all done');
 	
 });
 
