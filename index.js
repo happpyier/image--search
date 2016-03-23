@@ -7,7 +7,7 @@ example of an api call
 https://www.googleapis.com/customsearch/v1?key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM&cx=012239477241375126935:swwmv-c4dsi&q=lectures
 */
 var secretKey = 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
-var cxId = '012239477241375126935%3Aswwmv-c4dsi';
+var cxId = '012239477241375126935:swwmv-c4dsi';
 var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:swwmv-c4dsi';
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
@@ -31,23 +31,10 @@ app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   var API_KEY = secretKey; // specify your API key here
-    /*
-	plus.people.get({ auth: API_KEY, userId: '+RyuuLavitz' }, function(err, user) {
-	  response.send('User<br/>'+Object.keys(user.image)+'<br/>Result: ' + (err ? err.message : user.displayName) + '<br/>Image:<br/><img src='+user.image.url+'>');
-	});
-	*/
-	//response.sendFile(path.join(__dirname+'/searchresults.html'));
-	
-	// retrieve an access token
-	getAccessToken(oauth2Client, function() {
-		urlsearch.cse.list({ cx: '012239477241375126935%3Aswwmv-c4dsi', q: 'RyuuLavitz' }, function(err, user) {
-		response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+user);
-		});
-	  });
-	});
-
-	//response.end('all done');
-	
+	urlsearch.cse.list({ key: API_KEY, cx: '012239477241375126935%3Aswwmv-c4dsi', q: 'RyuuLavitz' }, function(err, user) 
+	{
+	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+user);
+	});	
 });
 
 app.listen(app.get('port'), function() {
