@@ -37,7 +37,7 @@ app.get('/:id', function(request, response) {
 	});
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
-	urlsearch.search.cse.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
+	urlsearch.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
 	  response.send(err ? 'it Failed' : 'It worked');
 	});
 	//response.end('all done');
