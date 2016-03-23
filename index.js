@@ -38,10 +38,14 @@ app.get('/:id', function(request, response) {
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
 	
-
-	urlsearch.cse.list({ key: API_KEY, cx: '012239477241375126935%3Aswwmv-c4dsi', q: 'RyuuLavitz' }, function(err, user) {
-	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+user);
+	// retrieve an access token
+	getAccessToken(oauth2Client, function() {
+		urlsearch.cse.list({ cx: '012239477241375126935%3Aswwmv-c4dsi', q: 'RyuuLavitz' }, function(err, user) {
+		response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+user);
+		});
+	  });
 	});
+
 	//response.end('all done');
 	
 });
