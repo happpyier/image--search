@@ -13,6 +13,10 @@ var google = require('googleapis');
 var OAuth2 = google.auth.oauth2;
 var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
 google.options({ auth: oauth2Client }); // set auth as a global default
+oauth2Client.setCredentials({
+  access_token: 'ACCESS TOKEN HERE',
+  refresh_token: 'REFRESH TOKEN HERE'
+});
 var plus = google.plus('v1');
 var urlsearch = google.customsearch('v1');
 var express = require('express');
