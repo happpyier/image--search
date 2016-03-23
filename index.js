@@ -37,8 +37,29 @@ app.get('/:id', function(request, response) {
 	});
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
-	urlsearch.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
-	  response.send(err ? 'it Failed' : 'It worked');
+	var options = {
+	  host: 'https://www.googleapis.com',
+	  path: '/customsearch/v1?q=Ryuu+Lavitz&cx=012239477241375126935%3Aswwmv-c4dsi&num=10&searchType=image&fields=items(image%2FcontextLink%2Clink%2Ctitle)&key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM'
+	};
+
+	callback = function(response) {
+	  var str = '';
+
+	  //another chunk of data has been recieved, so append it to `str`
+	  response.on('data', function (chunk) {
+		str += chunk;
+	  });
+
+	  //the whole response has been recieved, so we just print it out here
+	  response.on('end', function () {
+		response.send(str);
+	  });
+	}
+
+	http.request(options, callback).end();
+	
+	//urlsearch.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
+	//response.send(err ? 'it Failed' : 'It worked');
 	});
 	//response.end('all done');
 	
