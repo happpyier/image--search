@@ -31,7 +31,7 @@ app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
   var parameters2 = JSON.stringify(request.query);
   var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM', cx: '012239477241375126935%3Aswwmv-c4dsi', q: 'FunnyBunny' }, function(err, user) 
+	urlsearch.cse.list({ cx: '012239477241375126935%3Aswwmv-c4dsi', q: 'FunnyBunny' }, function(err, user) 
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+user);
 	});	
