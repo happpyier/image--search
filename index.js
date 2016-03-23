@@ -40,7 +40,7 @@ app.get('/:id', function(request, response) {
 	
 
 	urlsearch.cse.list({ cx: cxId, key: secretKey, q: 'RyuuLavitz' }, function(err, user) {
-	  response.send(err ? err : Object.keys(request)+'<br/>Test Line<br/>'+user);
+	  response.send(err ? err : '<br/>Test Line<br/>'+user);
 	});
 	//response.end('all done');
 	
