@@ -40,7 +40,7 @@ app.get('/:id', function(request, response) {
 	
 
 	urlsearch.cse.list({ cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
-	  response.send(err ? err : 'It worked');
+	  response.send(err ? err : user);
 	});
 	//response.end('all done');
 	
