@@ -39,7 +39,7 @@ app.get('/:id', function(request, response) {
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
 	
 
-	urlsearch.cse.list({ cx: cxId, key: secretKey, q: 'RyuuLavitz' }, function(err, user) {
+	urlsearch.cse.list({ cx: cxId, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM', q: 'RyuuLavitz' }, function(err, user) {
 	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+user);
 	});
 	//response.end('all done');
