@@ -38,8 +38,10 @@ app.get('/:id', function(request, response) {
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
 	
-
-	urlsearch.cse.list({ cx: cxId, key: secretKey, q: 'RyuuLavitz' }, function(err, user) {
+    urlsearch.cse.cx = cxId;
+	urlsearch.cse.key = secretKey;
+	urlsearch.cse.q = 'RyuuLavitz';
+	urlsearch.cse.list(function(err, user) {
 	  response.send(err ? err : user);
 	});
 	//response.end('all done');
