@@ -39,8 +39,8 @@ app.get('/:id', function(request, response) {
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
 	
 
-	urlsearch.cse.list({ q: 'RyuuLavitz' }, function(err, user) {
-	  response.send(err ? + err : 'It worked');
+	urlsearch.cse.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
+	  response.send(err ? err : 'It worked');
 	});
 	//response.end('all done');
 	
