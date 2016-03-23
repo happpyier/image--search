@@ -10,9 +10,9 @@ https://developers.google.com/apis-explorer/?hl=en_US#p/customsearch/v1/search.c
 			var gcse = document.createElement('script');
 			gcse.type = 'text/javascript';
 			gcse.async = true;
-			//gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-			//	'//cse.google.com/cse.js?cx=' + cx;
-			gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +'//www.googleapis.com/customsearch/v1?q=Ryuu+Lavitz&cx=012239477241375126935%3Aswwmv-c4dsi&num=10&searchType=image&fields=items(image%2FcontextLink%2Clink%2Ctitle)&key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
+			gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+				'//cse.google.com/cse.js?cx=' + cx + '&num=10&searchType=image&fields=items(image%2FcontextLink%2Clink%2Ctitle)&key=' +secretKey;
+			//gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') //+'//www.googleapis.com/customsearch/v1?q=Ryuu+Lavitz&cx=012239477241375126935%3Aswwmv-c4dsi&num=10&searchType=image&fields=items(image%2FcontextLink%2Clink%2Ctitle)&key=AIzaSyBO5IZ8i0lpF9//I0eMwZ9E4nNV3jXkyUuHM';
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(gcse, s);
 		  })();
