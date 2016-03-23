@@ -6,7 +6,6 @@ https://github.com/google/google-api-nodejs-client/ Also a reference;
 example of an api call
 https://www.googleapis.com/customsearch/v1?key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM&cx=012239477241375126935:swwmv-c4dsi&q=lectures
 */
-var http = require('http');
 var secretKey = 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
 var cxId = '012239477241375126935%3Aswwmv-c4dsi';
 var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:swwmv-c4dsi';
@@ -38,21 +37,12 @@ app.get('/:id', function(request, response) {
 	});
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
-	http.createServer(function(request, response) {
-	  var headers = request.headers;
-	  var method = request.method;
-	  var url = request.url;
-	  var body = [];
-	  request.on('error', function(err) {
-		console.error(err);
-	  }).on('data', function(chunk) {
-		body.push(chunk);
-	  }).on('end', function() {
-		body = Buffer.concat(body).toString();
-		// At this point, we have the headers, method, url and body, and can now
-		// do whatever we need to in order to respond to this request.
-	  });
-	}).listen(8080); // Activates this server, listening on port 8080.
+	
+
+	urlsearch.cse.list({ auth: API_KEY, cx: cxId, q: 'RyuuLavitz' }, function(err, user) {
+	  response.send(err ? 'it Failed' : 'It worked');
+	});
+	//response.end('all done');
 	
 });
 
