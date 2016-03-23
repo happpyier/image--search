@@ -39,12 +39,14 @@ app.get('/:id', function(request, response) {
 	*/
 	//response.sendFile(path.join(__dirname+'/searchresults.html'));
 	//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
-	var options = {
+	var options = 
+	{
 	  host: 'www.random.org',
 	  path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
 	};
 
-	callback = function(response) {
+	callback = function(response) 
+	{
 	  var str = '';
 
 	  //another chunk of data has been recieved, so append it to `str`
@@ -58,8 +60,8 @@ app.get('/:id', function(request, response) {
 	  });
 	  response.end('All Done');
 	}
-
-	http.request(options, callback).end();
+	var req = http.request(options, callback);
+	req.end();
 	
 });
 
