@@ -13,9 +13,11 @@ var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
 google.options({ auth: oauth2Client });
-oauth2Client.setCredentials({
-  access_token: 'ACCESS TOKEN HERE',
-  refresh_token: 'REFRESH TOKEN HERE'
+oauth2Client.getToken(code, function(err, tokens) {
+  // Now tokens contains an access_token and an optional refresh_token. Save them.
+  if(!err) {
+    oauth2Client.setCredentials(tokens);
+  }
 });
 var plus = google.plus('v1');
 var urlsearch = google.customsearch('v1');
