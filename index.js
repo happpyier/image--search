@@ -10,6 +10,7 @@ var secretKey = 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
 var cxId = '012239477241375126935:swwmv-c4dsi';
 var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:swwmv-c4dsi';
 var google = require('googleapis');
+/*
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
 //google.options({ auth: oauth2Client });
@@ -19,6 +20,7 @@ oauth2Client.getToken(code, function(err, tokens) {
     oauth2Client.setCredentials(tokens);
   }
 });
+*/
 var plus = google.plus('v1');
 var urlsearch = google.customsearch('v1');
 var express = require('express');
