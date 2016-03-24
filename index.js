@@ -12,7 +12,7 @@ var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
-//google.options({ auth: oauth2Client });
+google.options({ auth: oauth2Client });
 oauth2Client.getToken(function(err, tokens) {
   // Now tokens contains an access_token and an optional refresh_token. Save them.
   if(!err) {
