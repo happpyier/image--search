@@ -37,11 +37,16 @@ app.get('/latest', function(request, response) {
 });
 app.get('/:id', function(request, response) {
   var parameters1 = JSON.stringify(request.params);
+  
   var parameters2 = JSON.stringify(request.query);
+  if (parameters2 < 2)
+  {
+	parameters2 = 1;
+  }
   var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ cx: '012239477241375126935:swwmv-c4dsi', q: 'FunnyBunny', key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
+	urlsearch.cse.list({ cx: '012239477241375126935:swwmv-c4dsi', q: parameters1, num: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
-	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+user);
+	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+JSON.stringify(user));
 	});	
 });
 
