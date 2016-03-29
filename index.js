@@ -6,10 +6,15 @@ https://github.com/google/google-api-nodejs-client/ Also a reference;
 example of an api call
 https://www.googleapis.com/customsearch/v1?key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM&cx=012239477241375126935:swwmv-c4dsi&q=lectures
 */
+var express = require('express');
+var app = express();
+var path = require("path");
+var url = require("url");
 var secretKey = 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
 var cxId = '012239477241375126935:swwmv-c4dsi';
 var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:swwmv-c4dsi';
 var google = require('googleapis');
+/*
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
 google.options({ auth: oauth2Client });
@@ -19,12 +24,9 @@ oauth2Client.getToken(function(err, tokens) {
     oauth2Client.setCredentials(tokens);
   }
 });
+*/
 var plus = google.plus('v1');
 var urlsearch = google.customsearch('v1');
-var express = require('express');
-var app = express();
-var path = require("path");
-var url = require("url");
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
