@@ -29,7 +29,7 @@ app.get('/:id', function(request, response) {
   var parameters2 = request.query.offset;
   if (parameters2 < 2)
   {
-	parameters2 = 10;
+	parameters2 = 1;
   }
   else
   {
