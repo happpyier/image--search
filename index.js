@@ -34,7 +34,7 @@ app.get('/latest', function(request, response) {
 	   done();
     });
   });
-  resultsidSQL = 'Debugging';
+  //resultsidSQL = 'Debugging';
   response.send(resultsidSQL);
 });
 app.get('/:id', function(request, response) {
