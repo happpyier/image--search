@@ -14,18 +14,6 @@ var secretKey = 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
 var cxId = '012239477241375126935:swwmv-c4dsi';
 var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:swwmv-c4dsi';
 var google = require('googleapis');
-/*
-var OAuth2 = google.auth.OAuth2;
-var oauth2Client = new OAuth2(cxId, secretKey, pubURL);
-google.options({ auth: oauth2Client });
-oauth2Client.getToken(function(err, tokens) {
-  // Now tokens contains an access_token and an optional refresh_token. Save them.
-  if(!err) {
-    oauth2Client.setCredentials(tokens);
-  }
-});
-*/
-var plus = google.plus('v1');
 var urlsearch = google.customsearch('v1');
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
@@ -44,7 +32,7 @@ app.get('/:id', function(request, response) {
 	parameters2 = 1;
   }
   var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ cx: '012239477241375126935:swwmv-c4dsi', q: parameters1, num: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
+	urlsearch.cse.list({ cx: cxId, fields: 'items(image/contextLink,link,snippet)', q: parameters1, num: parameters2, key: secretKey }, function(err, user) 
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+JSON.stringify(user));
 	});	
