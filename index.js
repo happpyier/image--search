@@ -34,7 +34,7 @@ app.get('/:id', function(request, response) {
   var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId, fields: 'items(image/contextLink,link,snippet)', searchType: 'image', q: parameters1, num: parameters2, key: secretKey }, function(err, user) 
 	{
-	  response.send(err ? '<br/>Fail Line<br/>'+err : '<br/>Test Line<br/>'+JSON.stringify(user));
+	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
 	});	
 });
 
