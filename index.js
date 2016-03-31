@@ -59,7 +59,7 @@ app.get('/:id', function(request, response) {
     });
   });   
   var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ cx: cxId, fields: 'items(image/contextLink,link,snippet)', searchType: 'image', q: parameters1, start: parameters2, num: 10, key: secretKey }, function(err, user) 
+	urlsearch.cse.list({ cx: cxId, fields: 'items(image/contextLink,link,snippet)', searchType: 'image', q: parameters1, start: parameters2, num: 10, key: API_KEY }, function(err, user) 
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
 	});	
