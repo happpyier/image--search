@@ -23,7 +23,6 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
 });
 app.get('/latest', function(request, response) {
-  /*
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query("SELECT term, when from image_search", function(err, result) {
       if (err)
@@ -35,7 +34,6 @@ app.get('/latest', function(request, response) {
 	   done();
     });
   });
-  */
   resultsidSQL = 'Debugging';
   response.send(resultsidSQL);
 });
