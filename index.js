@@ -42,7 +42,7 @@ app.get('/latest', function(request, response) {
 app.get('/:id', function(request, response) {
 	
   var parameters1 = JSON.stringify(request.params);
-  var parameters2 = request.query.offset;
+  var parameters2 = parseInt(request.query.offset);
   if (parameters2 < 2)
   {
 	parameters2 = 1;
@@ -65,7 +65,7 @@ app.get('/:id', function(request, response) {
   });
   */  
   var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10,  searchType: 'image', fields: 'items(image/contextLink,link,snippet)', key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
+	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
 	});	
