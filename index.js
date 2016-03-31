@@ -8,6 +8,7 @@ https://www.googleapis.com/customsearch/v1?key=AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jX
 */
 var express = require('express');
 var app = express();
+var pg = require('pg');
 var path = require("path");
 var url = require("url");
 var secretKey = 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM';
@@ -24,8 +25,8 @@ app.get('/latest', function(request, response) {
   response.send('This is the latest query page.');
 });
 app.get('/:id', function(request, response) {
+	
   var parameters1 = JSON.stringify(request.params);
-  
   var parameters2 = request.query.offset;
   if (parameters2 < 2)
   {
@@ -35,7 +36,17 @@ app.get('/:id', function(request, response) {
   {
 	parameters2 = parameters2 * 10;  
   }
-   
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query("INSERT INTO image_search (term) VALUES ("+parameters1+")", function(err, result) {
+      if (err)
+       //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
+	   { resultsidSQL = ("Error " + err); }
+      else
+       //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
+	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
+	   done();
+    });
+  });   
   var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId, fields: 'items(image/contextLink,link,snippet)', searchType: 'image', q: parameters1, start: parameters2, num: 10, key: secretKey }, function(err, user) 
 	{
