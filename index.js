@@ -23,7 +23,7 @@ app.get('/', function(request, response) {
 });
 app.get('/latest', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query("SELECT term from image_search", function(err, result) {
+    client.query("SELECT term, when from image_search", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsidSQL = ("Error " + err); }
