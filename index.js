@@ -35,7 +35,7 @@ app.get('/latest', function(request, response) {
     });
   });
   //resultsidSQL = 'Debugging';
-  response.send(resultsidSQL);
+  response.send(client.query);
 });
 app.get('/:id', function(request, response) {
 	
