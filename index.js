@@ -29,10 +29,15 @@ app.get('/:id', function(request, response) {
   var parameters2 = request.query.offset;
   if (parameters2 < 2)
   {
-	parameters2 = 1;
+	parameters2 = 10;
   }
+  else
+  {
+	parameters2 = parameters2 * 10;  
+  }
+   
   var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ cx: cxId, fields: 'items(image/contextLink,link,snippet)', searchType: 'image', q: parameters1, num: 10, key: secretKey }, function(err, user) 
+	urlsearch.cse.list({ cx: cxId, fields: 'items(image/contextLink,link,snippet)', searchType: 'image', q: parameters1, start: parameters2, num: 10, key: secretKey }, function(err, user) 
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
 	});	
