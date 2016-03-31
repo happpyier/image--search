@@ -16,12 +16,14 @@ var cxId = '012239477241375126935:swwmv-c4dsi';
 var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:swwmv-c4dsi';
 var google = require('googleapis');
 var urlsearch = google.customsearch('v1');
+var resultsidSQL = '';
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
 });
 app.get('/latest', function(request, response) {
+  /*
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query("SELECT term, when from image_search", function(err, result) {
       if (err)
@@ -32,7 +34,9 @@ app.get('/latest', function(request, response) {
 	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
 	   done();
     });
-  });  
+  });
+  */
+  resultsidSQL = 'Debugging';
   response.send(resultsidSQL);
 });
 app.get('/:id', function(request, response) {
@@ -47,7 +51,19 @@ app.get('/:id', function(request, response) {
   {
 	parameters2 = parameters2 * 10;  
   }
-   
+  /*
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query("INSERT INTO image_search (term) VALUES ("+parameters1+")", function(err, result) {
+      if (err)
+       //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
+	   { resultsidSQL = ("Error " + err); }
+      else
+       //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
+	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
+	   done();
+    });
+  });
+  */  
   var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId,  searchType: 'image', q: parameters1, start: parameters2, num: 10, fields: 'items(image/contextLink,link,snippet)', key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
