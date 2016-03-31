@@ -23,17 +23,16 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
 });
 app.get('/latest', function(request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, next) {
-    client.query("SELECT * FROM image_search", function(err, result) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query("SELECT term, when from image_search", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsidSQL = "Results " + {results: result.rows}; }
-	   next();
+	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
+	   done();
     });
-	//resultsidSQL = JSON.stringify(client.query)
   });
   //resultsidSQL = 'Debugging';
   response.send(resultsidSQL);
@@ -50,7 +49,7 @@ app.get('/:id', function(request, response) {
   {
 	parameters2 = parameters2 * 10;  
   }
-  pg.connect(process.env.DATABASE_URL, function(err, client, next) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query("INSERT INTO image_search (term) VALUES ("+parameters1+")", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
@@ -58,7 +57,7 @@ app.get('/:id', function(request, response) {
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
 	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
-	   next();
+	   done();
     });
   });
   var API_KEY = secretKey; // specify your API key here
