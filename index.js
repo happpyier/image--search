@@ -33,9 +33,10 @@ app.get('/latest', function(request, response) {
 	   { resultsidSQL = JSON.stringify(result); }
 	   done();
     });
+	resultsidSQL = JSON.stringify(client.query)
   });
   //resultsidSQL = 'Debugging';
-  response.send(client.query);
+  response.send(resultsidSQL);
 });
 app.get('/:id', function(request, response) {
 	
