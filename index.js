@@ -50,7 +50,7 @@ app.get('/:id', function(request, response) {
 	parameters2 = parameters2 * 10;  
   }
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query("INSERT INTO image_search(term) VALUES ('"+parameters1+"')", function(err, result) {
+    client.query('INSERT INTO image_search(term) VALUES ("'+parameters1+'")', function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsidSQL = ("Error " + err); }
