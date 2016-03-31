@@ -30,10 +30,10 @@ app.get('/latest', function(request, response) {
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsidSQL = JSON.stringify(result); }
+	   { resultsidSQL = "Results " + {results: result.rows}; }
 	   done();
     });
-	resultsidSQL = JSON.stringify(client.query)
+	//resultsidSQL = JSON.stringify(client.query)
   });
   //resultsidSQL = 'Debugging';
   response.send(resultsidSQL);
