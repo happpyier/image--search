@@ -22,7 +22,18 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
 });
 app.get('/latest', function(request, response) {
-  response.send('This is the latest query page.');
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query("SELECT term, when from image_search", function(err, result) {
+      if (err)
+       //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
+	   { resultsidSQL = ("Error " + err); }
+      else
+       //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
+	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
+	   done();
+    });
+  });  
+  response.send(resultsidSQL);
 });
 app.get('/:id', function(request, response) {
 	
