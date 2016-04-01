@@ -50,7 +50,7 @@ app.get('/:id', function(request, response) {
   {
 	parameters2 = 90;
   }
-  if (parameters1 != 'latest')
+  if (parametersSQL != 'latest')
   {
 	  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query("INSERT INTO image_search VALUES ('parametersSQL', 'today')", function(err, result) {
