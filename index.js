@@ -57,7 +57,7 @@ app.get('/:id', function(request, response) {
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
+	   { /*resultsidSQL = JSON.stringify(result.rows[0].id);*/ }
 	   done();
     });
   });
