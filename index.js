@@ -45,14 +45,10 @@ app.get('/:id', function(request, response) {
   {
 	parameters2 = 1;
   }
-  if (parameters2 < 100 && parameters2 > 2)
+  if (parameters2 > 9)
   {
-	parameters2 = parameters2 * 10; 
+	parameters2 = 90; 
   } 
-  else 
-  {
-	parameters2 = 100;  
-  }
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('INSERT INTO image_search(term) VALUES ("'+parameters1.id+'")', function(err, result) {
       if (err)
