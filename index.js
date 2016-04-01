@@ -70,7 +70,7 @@ app.get('/:id', function(request, response) {
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
 	});
-	if 
+	if (parameters1 != "latest")
 	{	
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query("INSERT INTO image_search VALUES ('"+parametersSQL+"', '"+dateNowVal+"')", function(err, result) {
