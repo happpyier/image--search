@@ -25,7 +25,7 @@ app.get('/', function(request, response) {
 });
 app.get('/latest', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM image_search ORDER BY {when} DESC LIMIT 10', function(err, result) {
+    client.query('SELECT * FROM image_search ORDER BY search_date DESC LIMIT 10', function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsidSQL = ("Error term" + err); }
