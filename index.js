@@ -64,9 +64,10 @@ app.get('/:id', function(request, response) {
 		   { /*resultsidSQL = JSON.stringify(result.rows[0].id);*/ }
 		   done();
 		});
-		response.send(parameters1+'<--parameters1...parametersSQL-->'+parametersSQL);
+		
 	  });
   }
+  response.send(parameters1+'<--parameters1...parametersSQL-->'+parametersSQL);
   var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
