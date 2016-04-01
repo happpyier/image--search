@@ -70,7 +70,8 @@ app.get('/:id', function(request, response) {
 	var hour = dateNowVal.getHours();
 	var min = dateNowVal.getMinutes();
 	var dateNowVal = hour+'-'+min+'   '+mm+'-'+dd+'-'+yyyy;
-	if (failMarker == 3)
+	response.send
+	if (parametersSQL != '\"favicon.ico\"')
 	{	
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query("INSERT INTO image_search VALUES ('"+parametersSQL+"', '"+dateNowVal+"')", function(err, result) {
