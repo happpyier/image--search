@@ -42,14 +42,21 @@ app.get('/:id', function(request, response) {
 	
   var parameters1 = JSON.stringify(request.params);
   var parametersSQL = parameters1.id;
-  var parameters2 = parseInt(request.query.offset);
-  if (parameters2 < 2)
+  if (parameters2)
+  {
+	  var parameters2 = parseInt(request.query.offset);
+	  if (parameters2 < 2)
+	  {
+		parameters2 = 1;
+	  }
+	  if (parameters2 > 9)
+	  {
+		parameters2 = 90;
+	  }
+  }
+  else
   {
 	parameters2 = 1;
-  }
-  if (parameters2 > 9)
-  {
-	parameters2 = 90;
   }
   var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
