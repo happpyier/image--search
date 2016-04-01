@@ -17,15 +17,15 @@ var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:
 var google = require('googleapis');
 var urlsearch = google.customsearch('v1');
 var resultsidSQL = '';
-var failMarker = 1;
+var failMarker = 'pass';
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
-  failMarker = 0;
+  failMarker = 'fail';
 });
 app.get('/latest', function(request, response) {
-  failMarker = 0;
+  failMarker = 'fail';
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM image_search ORDER BY search_date DESC LIMIT 10', function(err, result) {
       if (err)
@@ -69,7 +69,7 @@ app.get('/:id', function(request, response) {
 	var hour = dateNowVal.getHours();
 	var min = dateNowVal.getMinutes();
 	var dateNowVal = hour+'-'+min+'   '+mm+'-'+dd+'-'+yyyy;
-	if (failMarker)
+	if (failMarker == 'pass')
 	{	
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query("INSERT INTO image_search VALUES ('"+parameters1+"', '"+dateNowVal+"')", function(err, result) {
