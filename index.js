@@ -17,6 +17,7 @@ var pubURL = 'https://cse.google.com:443/cse/publicurl?cx=012239477241375126935:
 var google = require('googleapis');
 var urlsearch = google.customsearch('v1');
 var resultsidSQL = '';
+var failMarker = 1;
 app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
@@ -31,10 +32,12 @@ app.get('/latest', function(request, response) {
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
 	   { resultsidSQL = JSON.stringify(result.rows); }
+	   failMarker = 0;
 	   done();
     });
   });
   //resultsidSQL = 'Debugging';
+  
   response.send(resultsidSQL);
 
 });
@@ -70,10 +73,10 @@ app.get('/:id', function(request, response) {
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
 	});
-	if (parameters1 != "latest")
+	if (failMarker === 1)
 	{	
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		client.query("INSERT INTO image_search VALUES ('"+parametersSQL+"', '"+dateNowVal+"')", function(err, result) {
+		client.query("INSERT INTO image_search VALUES ('"+parameters1+"', '"+dateNowVal+"')", function(err, result) {
 		  if (err)
 		   //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 		   { resultsidSQL = ("Error " + err); }
