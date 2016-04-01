@@ -51,7 +51,7 @@ app.get('/:id', function(request, response) {
 	parameters2 = 90;
   }
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('INSERT INTO image_search (term) VALUES ('+parametersSQL+')', function(err, result) {
+    client.query("INSERT INTO image_search VALUES ('"+parametersSQL+"', 'today')", function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsidSQL = ("Error " + err); }
