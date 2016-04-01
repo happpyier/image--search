@@ -64,6 +64,7 @@ app.get('/:id', function(request, response) {
 		   { /*resultsidSQL = JSON.stringify(result.rows[0].id);*/ }
 		   done();
 		});
+		response.send(parameters1+'<--parameters1...parametersSQL-->'+parametersSQL);
 	  });
   }
   var API_KEY = secretKey; // specify your API key here
