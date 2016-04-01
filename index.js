@@ -44,7 +44,6 @@ app.get('/latest', function(request, response) {
 
 });
 app.get('/:id', function(request, response) {
-  failMarker = 1;
   var parameters1 = JSON.stringify(request.params);
   var parametersSQL = parameters1;
   if (parameters2)
