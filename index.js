@@ -51,14 +51,14 @@ app.get('/:id', function(request, response) {
 	parameters2 = 90;
   }
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('INSERT INTO image_search (term) VALUES ('+parametersSQL+')', done();function(err, result) {
+    client.query('INSERT INTO image_search (term) VALUES ('+parametersSQL+')', function(err, result) {
       if (err)
        //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
 	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
-	   
+	   done();
     });
   });
   var API_KEY = secretKey; // specify your API key here
