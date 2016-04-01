@@ -22,6 +22,7 @@ app.set('port', (process.env.PORT || 5000));
 app.set("Content-Type", "text/html");
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname+'/index.html'));
+  failMarker = 0;
 });
 app.get('/latest', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -68,11 +69,6 @@ app.get('/:id', function(request, response) {
 	var hour = dateNowVal.getHours();
 	var min = dateNowVal.getMinutes();
 	var dateNowVal = hour+'-'+min+'   '+mm+'-'+dd+'-'+yyyy;
-    var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
-	{
-	  response.send(err ? '<br/>Sorry<br/>'+err : JSON.stringify(user.items));
-	});
 	if (failMarker == 1)
 	{	
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -87,7 +83,13 @@ app.get('/:id', function(request, response) {
 		});
 		
 	  });
-  }
+	}
+    var API_KEY = secretKey; // specify your API key here
+	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
+	{
+	  response.send(err ? '<br/>Sorry<br/>'+err : JSON.stringify(user.items));
+	});
+
 });
 
 app.listen(app.get('port'), function() {
