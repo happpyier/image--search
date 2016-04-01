@@ -62,7 +62,7 @@ app.get('/:id', function(request, response) {
 	var dd = dateNowVal.getDate();
 	var mm = dateNowVal.getMonth()+1; //January is 0!
 	var yyyy = dateNowVal.getFullYear();
-	var hour = dateNowVal.getHour();
+	var hour = dateNowVal.getHours();
 	var min = dateNowVal.getMinutes();
 	var dateNowVal = hour+'-'+min+'-'+mm+'-'+dd+'-'+yyyy;
     var API_KEY = secretKey; // specify your API key here
