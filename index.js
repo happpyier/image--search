@@ -58,8 +58,12 @@ app.get('/:id', function(request, response) {
   {
 	parameters2 = 1;
   }
-  var dateNowVal =Date.now();
-  var API_KEY = secretKey; // specify your API key here
+	var dateNowVal = new Date();
+	var dd = dateNowVal.getDate();
+	var mm = dateNowVal.getMonth()+1; //January is 0!
+	var yyyy = dateNowVal.getFullYear();
+	var dateNowVal = mm+'-'+dd+'-'+yyyy;;
+    var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
