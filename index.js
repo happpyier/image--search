@@ -73,7 +73,7 @@ app.get('/:id', function(request, response) {
 	{
 	  response.send(err ? '<br/>Sorry<br/>'+err : JSON.stringify(user.items));
 	});
-	if (failMarker === 1)
+	if (failMarker == 1)
 	{	
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query("INSERT INTO image_search VALUES ('"+parameters1+"', '"+dateNowVal+"')", function(err, result) {
