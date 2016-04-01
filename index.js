@@ -48,7 +48,8 @@ app.get('/:id', function(request, response) {
   if (parameters2 > 9)
   {
 	parameters2 = 90;
-  } 
+  }
+  /*
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('INSERT INTO image_search (term) VALUES ("'+parameters1.id+'")', function(err, result) {
       if (err)
@@ -60,6 +61,7 @@ app.get('/:id', function(request, response) {
 	   done();
     });
   });
+  */
   var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
