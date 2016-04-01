@@ -25,6 +25,7 @@ app.get('/', function(request, response) {
   failMarker = 0;
 });
 app.get('/latest', function(request, response) {
+  failMarker = 0;
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM image_search ORDER BY search_date DESC LIMIT 10', function(err, result) {
       if (err)
@@ -33,7 +34,7 @@ app.get('/latest', function(request, response) {
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
 	   { resultsidSQL = JSON.stringify(result.rows); }
-	   failMarker = 0;
+	   
 	   done();
     });
   });
@@ -43,7 +44,7 @@ app.get('/latest', function(request, response) {
 
 });
 app.get('/:id', function(request, response) {
-	
+  failMarker = 1;
   var parameters1 = JSON.stringify(request.params);
   var parametersSQL = parameters1;
   if (parameters2)
@@ -69,7 +70,7 @@ app.get('/:id', function(request, response) {
 	var hour = dateNowVal.getHours();
 	var min = dateNowVal.getMinutes();
 	var dateNowVal = hour+'-'+min+'   '+mm+'-'+dd+'-'+yyyy;
-	if (failMarker == 1)
+	if (failMarker)
 	{	
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		client.query("INSERT INTO image_search VALUES ('"+parameters1+"', '"+dateNowVal+"')", function(err, result) {
