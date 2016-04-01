@@ -64,7 +64,7 @@ app.get('/:id', function(request, response) {
 	var yyyy = dateNowVal.getFullYear();
 	var hour = dateNowVal.getHours();
 	var min = dateNowVal.getMinutes();
-	var dateNowVal = hour+'-'+min+'-'+mm+'-'+dd+'-'+yyyy;
+	var dateNowVal = hour+'-'+min+'   '+mm+'-'+dd+'-'+yyyy;
     var API_KEY = secretKey; // specify your API key here
 	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
