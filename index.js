@@ -41,7 +41,7 @@ app.get('/latest', function(request, response) {
 app.get('/:id', function(request, response) {
 	
   var parameters1 = JSON.stringify(request.params);
-  var parametersSQL = request.params;
+  var parametersSQL = parameters1;
   if (parameters2)
   {
 	  var parameters2 = parseInt(request.query.offset);
