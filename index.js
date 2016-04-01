@@ -30,7 +30,7 @@ app.get('/latest', function(request, response) {
 	   { resultsidSQL = ("Error " + err); }
       else
        //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
-	   { resultsidSQL = JSON.stringify(result.rows[0]); }
+	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
 	   done();
     });
   });
@@ -49,15 +49,21 @@ app.get('/:id', function(request, response) {
   {
 	parameters2 = parameters2 * 10;  
   }
-
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('INSERT INTO image_search(term) VALUES ("'+parameters1.id+'")', function(err, result) {
+      if (err)
+       //{ resultsSQL = "Error "+ err; response.send("Error " + err);  }
+	   { resultsidSQL = ("Error " + err); }
+      else
+       //{ resultsSQL = "Results " + {results: result.rows}; response.render('pages/db', {results: result.rows} ); }
+	   { resultsidSQL = JSON.stringify(result.rows[0].id); }
+	   done();
+    });
+  });
   var API_KEY = secretKey; // specify your API key here
-	urlsearch.cse.list({ cx: '012239477241375126935%3Aswwmv-c4dsi', q: parameters1, num: 10, searchType: 'image', key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
+	urlsearch.cse.list({ cx: cxId, q: parameters1, num: 10, searchType: 'image', fields: 'items(image/contextLink,link,snippet)', start: parameters2, key: 'AIzaSyBO5IZ8i0lpF9I0eMwZ9E4nNV3jXkyUuHM' }, function(err, user) 
 	{
 	  response.send(err ? '<br/>Fail Line<br/>'+err : JSON.stringify(user.items));
-	  /*
-	  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('INSERT INTO image_search(term) VALUES ("'+parameters1.id+'")');
-	});*/
 	});	
 });
 
